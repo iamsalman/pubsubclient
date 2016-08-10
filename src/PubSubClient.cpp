@@ -174,7 +174,7 @@ boolean PubSubClient::connect(const char *id, const char *user, const char *pass
             write(MQTTCONNECT,buffer,length-5);
 
             lastInActivity = lastOutActivity = millis();
-
+            return true;
             while (!_client->available()) {
                 unsigned long t = millis();
                 if (t-lastInActivity >= ((int32_t) MQTT_SOCKET_TIMEOUT*1000UL)) {
